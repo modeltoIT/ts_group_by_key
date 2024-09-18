@@ -1,7 +1,36 @@
+// groupByKey(books, 'country') === {
+//   'Ukraine': [
+//     { id: 1, color: 'red', country: 'Ukraine' },
+//     { id: 1, color: 'green', country: 'Ukraine' },
+//   ],
+//   'Italy': [
+//     { id: 1, color: 'red', country: 'Italy' },
+//   ],
+// }
+
 type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-export function groupByKey(items, key) {
-  // write code here;
+export function groupByKey<T extends object>(
+  items: T[],
+  key: keyof T,
+): GroupsMap<T> {
+  const mainObj: GroupsMap<T> = {};
+
+  for (let i: number = 0; i < items.length; i++) {
+    const parameter = items[i][key];
+
+    if (typeof parameter === 'string' || typeof parameter === 'number') {
+      const keySort = parameter.toString();
+
+      if (!mainObj[keySort]) {
+        mainObj[keySort] = [];
+      }
+
+      mainObj[keySort].push(items[i]);
+    }
+  }
+
+  return mainObj;
 }
