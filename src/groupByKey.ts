@@ -14,11 +14,14 @@ export function groupByKey<T extends object>(
     if (typeof parameter === 'string' || typeof parameter === 'number') {
       const keySort = parameter.toString();
 
-      if (!mainObj[keySort]) {
-        mainObj[keySort] = [];
-      }
+      mainObj[keySort] ||= [];
 
       mainObj[keySort].push(items[i]);
+    } else {
+      throw new Error(
+        'The value of items[key] should be a string or number' +
+          ' to group the items correctly',
+      );
     }
   }
 
