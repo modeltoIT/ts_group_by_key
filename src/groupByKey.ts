@@ -1,13 +1,3 @@
-// groupByKey(books, 'country') === {
-//   'Ukraine': [
-//     { id: 1, color: 'red', country: 'Ukraine' },
-//     { id: 1, color: 'green', country: 'Ukraine' },
-//   ],
-//   'Italy': [
-//     { id: 1, color: 'red', country: 'Italy' },
-//   ],
-// }
-
 type GroupsMap<T> = {
   [key: string]: T[];
 };
