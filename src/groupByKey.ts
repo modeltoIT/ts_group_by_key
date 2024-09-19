@@ -18,10 +18,7 @@ export function groupByKey<T extends object>(
 
       mainObj[keySort].push(items[i]);
     } else {
-      throw new Error(
-        'The value of items[key] should be a string or number' +
-          ' to group the items correctly',
-      );
+      throw new Error('The value of items[key] should be a string or number');
     }
   }
 
